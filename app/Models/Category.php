@@ -6,23 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Profile extends Model
+class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $date = ['created_at'];
     protected $fillable = [
-        'name',
-        'email',
-        'role',
-        'address',
-        'telephone',
-        'password'
+        'name'
     ];
 
-
-    public function publications()
-    {
-        return $this->hasMany(Publication::class);
-    }
 }

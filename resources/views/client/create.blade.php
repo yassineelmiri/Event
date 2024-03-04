@@ -37,9 +37,10 @@
                     </div>
                     <div class="col-span-2">
                         <select class="input_style__primary" name="category">
-                            <option value="" disabled selected>Sélectionner une catégorie</option>
-                            <option value="Comedia">Comédie</option>
-                            <option value="Movie">Film</option>
+                            <option  disabled selected>Sélectionner une catégorie</option>
+                            @foreach ($category as $category)
+                            <option value="{{$category->name}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-span-2">

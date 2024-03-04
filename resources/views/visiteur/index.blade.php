@@ -1,6 +1,6 @@
 <x-master>
 
-<!--========== BREADCRUMB STYLE START ==========-->
+    <!--========== BREADCRUMB STYLE START ==========-->
     <div class="paralax-container lg:py-36 py-20 relative overflow-hidden">
         <div class="jarallax absolute inset-0 z-minus before:content-[''] before:absolute before:inset-0 before:bg-[#030610] before:bg-opacity-50 before:z-minus"
             data-jarallax>
@@ -25,7 +25,7 @@
     </div>
     <!--========== BREADCRUMB STYLE END ==========-->
 
-    
+
 
     <!--========== FEATURED PACKAGE STYLE ONE START==========-->
     <div class="bg-gradient-to-t to-[#FFF1EC] from-white z-1 relative">
@@ -34,7 +34,7 @@
                 <form action="#" class="w-full" autocomplete="off">
                     <div class="flex items-center lg:flex-row flex-col space-y-4 lg:space-y-0 lg:space-x-base">
                         <div class="relative flex-grow lg:w-auto w-full select_style__two">
-                            
+
                             <select class="destination-select" name="state">
                                 <option value="0">Destinations</option>
                                 <option value="1">New York</option>
@@ -46,8 +46,9 @@
                                 <option value="7">Seattle</option>
                                 <option value="8">Las vegas</option>
                             </select>
-        
-                            <div class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
+
+                            <div
+                                class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -61,8 +62,9 @@
                         </div>
                         <div class="relative  flex-grow lg:w-auto w-full">
                             <input type="text" name="daterange" value="Select Date"
-                            class="w-full bg-transparent border border-primary-1 outline-0 lg:h-17 h-14 pr-4 lg:pl-[60px] pl-[50px] lg:text-md text-base text-primary-1 placeholder:text-primary-1 font-medium" />
-                            <div class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
+                                class="w-full bg-transparent border border-primary-1 outline-0 lg:h-17 h-14 pr-4 lg:pl-[60px] pl-[50px] lg:text-md text-base text-primary-1 placeholder:text-primary-1 font-medium" />
+                            <div
+                                class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -87,8 +89,9 @@
                                 <option value="5">Summer Vacation</option>
                                 <option value="5">Others</option>
                             </select>
-        
-                            <div class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
+
+                            <div
+                                class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -98,7 +101,8 @@
                             </div>
                         </div>
                         <button type="submit"
-                            class="block lg:w-auto w-full flex-grow text-center bg-primary-1 lg:h-17 h-14  text-white font-medium text-md hover:bg-[#d0aa6c] duration-300">FIND NOW</button>
+                            class="block lg:w-auto w-full flex-grow text-center bg-primary-1 lg:h-17 h-14  text-white font-medium text-md hover:bg-[#d0aa6c] duration-300">FIND
+                            NOW</button>
                     </div>
                 </form>
             </div>
@@ -113,58 +117,7 @@
             <div class="grid grid-cols-12 lg:gap-12 gap-base">
                 <div class="lg:col-span-8 col-span-12 grid md:grid-cols-2 grid-cols-1 gap-base">
                     @foreach ($publication as $publication)
-                        
-                   
-                    <div class="group/card package-card-style-one ">
-                        <div class="overflow-hidden relative">
-                            <a href="package-details.html">
-                                <img src="assets/images/packages/p1-1.webp" alt="package-img"
-                                    class="w-full group-hover/card:scale-105 duration-300">
-                            </a>
-                            <span
-                                class="absolute inline-block top-5 right-5 text-sm text-white rounded-full bg-[#219FFF] py-1 px-3">20%
-                                off</span>
-                        </div>
-                        <h3 class="card-title-alpha group-hover/card:text-primary-1 lg:mt-6 mt-5"><a
-                                href="{{ route('show.publications',$publication->id) }}">{{$publication->titel}}-[{{$publication->location}}]</a></h3>
-
-                        <ul
-                            class="flex flex-wrap lg:text-[15px] text-[13px] font-medium text-dark-2 mt-4 package-feature">
-                            <li>
-                                <span class="text-primary-1">
-                                    <i class="bi bi-people"></i>
-                                </span>
-                                <span>{{$publication->places_available}} People</span>
-                            </li>
-                            <li>
-                                <span class="text-primary-1">
-                                    <i class="bi bi-clock"></i>
-                                </span>
-                                <span>{{$publication->date}} Days</span>
-                            </li>
-                            <li>
-                                <span class="text-primary-1">
-                                    <i class="bi bi-coin"></i>
-                                </span>
-                                <span>From <span class="text-primary-1 font-bold">$250</span></span>
-                            </li>
-                        </ul>
-
-                        <a href="{{ route('show.publications',$publication->id) }}"
-                            class="package-explore-btn group/btn">
-                            <span class="mr-2">Explore Now</span>
-                            <svg class="group-hover/btn:translate-x-2 duration-200 " width="27" height="14"
-                                viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.217443 6.25H18.4827C18.6276 6.25 18.7001 6.30263 18.7001 6.40789V7.59211C18.7001 7.69737 18.6276 7.75 18.4827 7.75H0.217443C0.0724811 7.75 0 7.69737 0 7.59211V6.40789C0 6.30263 0.0724811 6.25 0.217443 6.25Z"
-                                    fill="currentColor" />
-                                <path
-                                    d="M20.7001 12.28L25.0467 7.9333C25.5601 7.41997 25.5601 6.57997 25.0467 6.06664L20.7001 1.71997"
-                                    stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
+                       <x-publication :publication="$publication"/>
                     @endforeach
                     <div class="group/card package-card-style-one ">
                         <div class="overflow-hidden relative">
@@ -194,12 +147,11 @@
                                 <span class="text-primary-1">
                                     <i class="bi bi-coin"></i>
                                 </span>
-                                <span>From <span class="text-primary-1 font-bold">$250</span></span>
+                                </span>
                             </li>
                         </ul>
 
-                        <a href="package-details.html"
-                            class="package-explore-btn group/btn">
+                        <a href="package-details.html" class="package-explore-btn group/btn">
                             <span class="mr-2">Explore Now</span>
                             <svg class="group-hover/btn:translate-x-2 duration-200 " width="27" height="14"
                                 viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,12 +196,11 @@
                                 <span class="text-primary-1">
                                     <i class="bi bi-coin"></i>
                                 </span>
-                                <span>From <span class="text-primary-1 font-bold">$250</span></span>
+                                </span>
                             </li>
                         </ul>
 
-                        <a href="package-details.html"
-                            class="package-explore-btn group/btn">
+                        <a href="package-details.html" class="package-explore-btn group/btn">
                             <span class="mr-2">Explore Now</span>
                             <svg class="group-hover/btn:translate-x-2 duration-200 " width="27" height="14"
                                 viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -292,12 +243,11 @@
                                 <span class="text-primary-1">
                                     <i class="bi bi-coin"></i>
                                 </span>
-                                <span>From <span class="text-primary-1 font-bold">$250</span></span>
+                                </span>
                             </li>
                         </ul>
 
-                        <a href="package-details.html"
-                            class="package-explore-btn group/btn">
+                        <a href="package-details.html" class="package-explore-btn group/btn">
                             <span class="mr-2">Explore Now</span>
                             <svg class="group-hover/btn:translate-x-2 duration-200 " width="27" height="14"
                                 viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -311,7 +261,7 @@
                             </svg>
                         </a>
                     </div>
-                    
+
                 </div>
                 <div class="lg:col-span-4 col-span-12 ">
                     <div class="pb-[10px] mb-8 border-b border-dark-1 border-opacity-10">
@@ -323,13 +273,17 @@
                         <div class="range-slider pt-4" id="range-slider">
                             <div id="slider-range"></div>
                             <div class="flex text-dark-2 lg:text-base textsm pt-4 items-center">
-                                Pricing Range : 
-                                <input type="text" id="amount" class="ml-2 text-dark-1 text-sm font-semibold bg-transparent outline-none border-none" readonly style="border:0;">
+                                Pricing Range :
+                                <input type="text" id="amount"
+                                    class="ml-2 text-dark-1 text-sm font-semibold bg-transparent outline-none border-none"
+                                    readonly style="border:0;">
                             </div>
                         </div>
                     </aside>
-                    
-                    <div class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat"></div>
+
+                    <div
+                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
+                    </div>
 
                     <aside>
                         <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Categories</h5>
@@ -375,7 +329,9 @@
 
                     </aside>
 
-                    <div class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat"></div>
+                    <div
+                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
+                    </div>
 
                     <aside>
                         <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Destinations</h5>
@@ -421,8 +377,10 @@
 
                     </aside>
 
-                    <div class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat"></div>
-                 
+                    <div
+                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
+                    </div>
+
 
                     <aside>
                         <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">
@@ -466,7 +424,7 @@
                                     <label for="d6">More Then 7 Days</label>
                                 </div>
                             </li>
-                            
+
                         </ul>
                         <!-- <ul class="pt-4">
                             <li class="pt-3 first:pt-0">
@@ -487,7 +445,7 @@
 
                     </aside>
 
-                    
+
                     <aside class="widget widget_blogs lg:mt-[50px] mt-10">
                         <div class="pb-[10px] mb-8 border-b border-dark-1 border-opacity-10">
                             <h4 class="text-lg font-semibold text-dark-1">Offer Deals :</h4>
@@ -500,11 +458,16 @@
                                 </a>
                                 <div class="grow">
                                     <ul class="text-sm text-orange-500">
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i></li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i>
+                                        </li>
                                     </ul>
                                     <h5
                                         class="lg:text-md mt-1 text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
@@ -512,8 +475,8 @@
                                     </h5>
                                     <div class="mt-[5px] text-dark-2">
                                         <span>
-                                          Form
-                                        </span> 
+                                            Form
+                                        </span>
                                         <span class="text-primary-1 font-medium">$140.00</span>
                                     </div>
                                 </div>
@@ -525,11 +488,16 @@
                                 </a>
                                 <div class="grow">
                                     <ul class="text-sm text-orange-500">
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i></li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i>
+                                        </li>
                                     </ul>
                                     <h5
                                         class="lg:text-md mt-1 text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
@@ -537,8 +505,8 @@
                                     </h5>
                                     <div class="mt-[5px] text-dark-2">
                                         <span>
-                                          Form
-                                        </span> 
+                                            Form
+                                        </span>
                                         <span class="text-primary-1 font-medium">$140.00</span>
                                     </div>
                                 </div>
@@ -550,11 +518,16 @@
                                 </a>
                                 <div class="grow">
                                     <ul class="text-[13px] text-orange-500">
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i></li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i>
+                                        </li>
                                     </ul>
                                     <h5
                                         class="lg:text-md mt-[3px] text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
@@ -562,15 +535,15 @@
                                     </h5>
                                     <div class="mt-[5px] text-dark-2">
                                         <span>
-                                          Form
-                                        </span> 
+                                            Form
+                                        </span>
                                         <span class="text-primary-1 font-medium">$140.00</span>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </aside>
-                    
+
                     <!-- <aside class="widget widget_offer lg:mt-[50px] mt-10">
                         <a href="package-list.html">
                             <img src="./assets/images/backgrounds/offer-side-banner.webp" alt="offer" class="w-full" />

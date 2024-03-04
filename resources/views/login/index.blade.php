@@ -21,10 +21,10 @@
                 <div class="text-center">
                     <a href="{{ route('home') }}"><img src="assets/images/logo.png" alt="logo" class="mx-auto"></a>
                     @error('email')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                 </div>
 
                 <ul id="tabs-nav" class="login-tabs flex gap-4 pt-6">
@@ -34,13 +34,15 @@
                 <div id="tab-1" class="tab-content active">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                       
+
                         <div class="mt-9">
-                            <input type="email" placeholder="Email or Username" class="input_style__primary" name="email">
+                            <input type="email" placeholder="Email or Username" class="input_style__primary"
+                                name="email">
                         </div>
 
                         <div class="lg:mt-5 mt-4">
-                            <input type="password" placeholder="Your Passowrd" class="input_style__primary" name="password">
+                            <input type="password" placeholder="Your Passowrd" class="input_style__primary"
+                                name="password">
                         </div>
                         <div class="lg:mt-5 mt-4 flex gap-2 items-center">
                             <input type="checkbox" id="logincheck" class="h-4 w-4 rounded-md border-primary-1 border">
@@ -58,12 +60,12 @@
                         </button>
 
                         <div class="text-center lg:mt-6 mt-5">
-                            <a href="#" class="text-dark-3">Forgot your password ?</a>
+                            <a href="{{ route('Forgot') }}" class="text-dark-3">Forgot your password ?</a>
                         </div>
                     </form>
                 </div>
 
-              
+
                 <div id="tab-2" class="tab-content">
                     <form method="POST" action="{{ route('profiles.store') }}" enctype="multipart/form-data">
                         @csrf
@@ -84,6 +86,13 @@
                                 class="input_style__primary">
                         </div>
                         <div class="lg:mt-5 mt-4">
+                            <input type="text" placeholder="telephone :" name="telephone"
+                                class="input_style__primary" name="password">
+                        </div>
+                        <div class="lg:mt-5 mt-4">
+                            <input type="text" placeholder="address :" name="address" class="input_style__primary">
+                        </div>
+                        <div class="lg:mt-5 mt-4">
                             <select class="input_style__primary"name="role" required>
                                 <option value="{{ old('role') }}">Select role</option>
                                 <option value="Utilisateur">Utilisateur</option>
@@ -91,7 +100,8 @@
                             </select>
                         </div>
                         <div class="lg:mt-5 mt-4 flex gap-2 items-center">
-                            <input type="checkbox" id="logincheck" class="h-4 w-4 rounded-md border-primary-1 border">
+                            <input type="checkbox" id="logincheck"
+                                class="h-4 w-4 rounded-md border-primary-1 border">
                             <label for="logincheck" class="text-dark-2">I Accept <a href="about.html"
                                     class="underline">Terms And Condition</a></label>
                         </div>

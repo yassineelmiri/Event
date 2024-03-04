@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PublicationRequest;
+use App\Models\Category;
 use App\Models\Publication;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        return view('client.create');
+        $category = Category::all();
+      
+        return view('client.create',compact('category'));
     }
 
     /**

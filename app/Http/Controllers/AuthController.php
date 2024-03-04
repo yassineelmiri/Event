@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\Publication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +18,19 @@ class AuthController extends Controller
     {
         return view('login.index');
     }
+    public function Forgot(){
+        return view('login.password');
+    }
+    public function ForgotPost(Request $request){
+        $request->validate([
+            'email'=>"required|email|exists:profiles",
+        ]);
+        
+        $token = Str::random(64);
+        
+
+    }
+
     public function afficher()
     {
        $publication = Publication::paginate(8);
@@ -30,7 +44,9 @@ class AuthController extends Controller
     }
     public function detail(Publication $publication)
     {
-        return view('visiteur.reservation',compact('publication'));
+        $profile = Profile::where('id',$publication->id)->firstOrFail();
+
+        return view('visiteur.reservation',compact('publication','profile'));
 
     }
 

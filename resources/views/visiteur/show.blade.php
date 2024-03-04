@@ -48,11 +48,7 @@
                         <span class="text-primary-1 lg:text-2md text-md">(20 review)</span>
                     </div>
                 </div>
-                <div class="pt-2">
-                    <h2 class="font-sans lg:text-[45px] leading-1.2 md:text-xl text-lg font-semibold">$175
-                    </h2>
-                    <div class="text-md font-normal ml-1">per person</div>
-                </div>
+                
             </div>
             <div class="grid grid-cols-12 gap-base">
                 <div class="lg:col-span-8 col-span-12">
@@ -502,25 +498,30 @@
                         <li class="tab-link basis-1/2" data-tab="4">Enquiry</li>
                     </ul>
                     <div id="tab-3" class="tab-content active">
-                        <form action="#" autocomplete="off"
+                       
+                       
+                        <form action="" method="GET" autocomplete="off"
                             class="lg:px-base px-5 lg:pt-6 lg:pb-base pt-4 pb-5 bg-white border-primary-1 border">
-
                             <h4 class="lg:text-xl text-lg text-dark-1 font-semibold"><span
-                                    class="text-md font-sans font-normal text-dark-3">Start from</span> $175</h4>
+                                    class="text-md font-sans font-normal text-dark-3">Start from</span> Gratuit</h4>
                             <div class="mt-5 lg:mt-6">
                                 <label for="tourTime" class="mb-2 text-dark-3 capitalize block">Date</label>
-                                <input type="text" id="tourTime" name="daterange" class="input_style__primary" />
+                                <input type="date" class="input_style__primary" value="{{$publication->date}}" readonly />
+                            </div>
+                            <div class="mt-5 lg:mt-6">
+                                <label  class="mb-2 text-dark-3 capitalize block">Lieu</label>
+                                <input type="text" class="input_style__primary" value="{{$publication->location}}" readonly />
                             </div>
                             
                             <div class="js-form-counters lg:mt-6 mt-5 relative">
                                 <label for="tourTime" class="mb-2 text-dark-3 capitalize block">Number of travelers</label>
-                                <button type="button" class="w-full bg-transparent border border-stock-1 lg:h-[54px] h-12 px-5 py-2 text-dark-2 focus:border-primary-1 flex items-center common_dropdown__btn">
+                                <button type="button" class="w-full bg-transparent border border-stock-1 lg:h-[54px] h-12 px-5 py-2 text-dark-2 focus:border-primary-1 flex items-center common_dropdown__btn" name="place">
                                     <div>
                                         <span class="js-count-adult">1</span> adults
                                     -
                                     <span class="js-count-child">0</span> childeren
                                     -
-                                    <span class="js-count-room">1</span> room
+                                    <span class="js-count-room">1</span> voiture
                                     </div>
                                   </button>
 
@@ -559,9 +560,8 @@
                                         </div>
                                       </div>
 
-                                      <!-- room count -->
                                     <div class="js-counter flex justify-between items-center" data-value-change=".js-count-room">
-                                        <p class="text-dark-1 ">Room</p>
+                                        <p class="text-dark-1 ">voiture</p>
                                         <div class="flex items-center space-x-4">
                                             <button type="button" class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
                                                 <i class="bi bi-dash-lg"></i>
@@ -579,22 +579,18 @@
 
                             <div class="pt-4">
                                 <div class="custom-checkbox mt-4">
-                                    <input type="checkbox" value="add-one" id="add-one">
-                                    <label for="add-one">Add Service per booking - <span class="font-semibold">$30</span></label>
-                                </div>
-                                <div class="custom-checkbox mt-4">
-                                    <input type="checkbox" value="add-two" id="add-two">
-                                    <label for="add-two">Add Service per day - <span class="font-semibold">$10</span></label>
+                                    <input type="checkbox" value="$30" id="add-one" name="vip">
+                                    <label for="add-one">Add Service per VIP - <span class="font-semibold">$30</span></label>
                                 </div>
                             </div>
 
                             <div class="pt-5 border-t border-stock-1 mt-6">
-                                <div class="font-sans text-dark-1 text-2md font-semibold flex justify-between">Total : <span>$450</span></div>
+                                <div class="font-sans text-dark-1 text-2md font-semibold flex justify-between">Status : <span>Disponible</span></div>
                             </div>
 
                             <button class="capitalize w-full text-center underline duration-150 mt-4 text-dark-1 font-medium flex items-center justify-center hover:text-primary-1">check availability </button>
                             <a href="{{ route('show.reservation',$publication->id) }}" class="btn_primary__v1 !w-full justify-center mt-5">
-                                Book Now
+                                reservation 
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -603,6 +599,9 @@
                                         stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                             </a>
+                       
+
+                                              
                         </form>
                     </div>
 
