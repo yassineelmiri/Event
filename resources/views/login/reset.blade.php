@@ -28,14 +28,15 @@
                     <li class="tab-link active basis-1/2" data-tab="1">Rest password</li>
                 </ul>
                 <div id="tab-1" class="tab-content active">
-                    <form method="POST">
+                    <form method="POST" action="{{ route('reset.password.post') }}">
                         @csrf
+                        <input type="text" name="token" hidden value="{{$token}}">
                         <div class="mt-9">
                             <input type="email" placeholder="Email : " class="input_style__primary"
                                 name="email">
                         </div>
                         <div class="mt-9">
-                            <input type="pasword" placeholder="password  " class="input_style__primary"
+                            <input type="password" placeholder="password  " class="input_style__primary"
                                 name="password">
                         </div>
                         <div class="mt-9">
