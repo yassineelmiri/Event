@@ -15,6 +15,11 @@ Route::resource('publications', PublicationController::class);
 Route::post('/publications/ajouter', [PublicationController::class, 'store'])->name('ajouter');
 
 Route::get('/utilisateur', [SadminController::class, 'utilisateur'])->name('admin.utilisateur');
+Route::get('/Analytics', [SadminController::class, 'Analytics'])->name('admin.Analytics');
+Route::get('/categories', [SadminController::class, 'categories'])->name('admin.categories');
+Route::get('/categories/ajouter', [SadminController::class, 'AjouterCategories'])->name('ajouter.categories');
+
+
 Route::resource('admin', AdminController::class);
 Route::resource('profiles', ProfileController::class);
 

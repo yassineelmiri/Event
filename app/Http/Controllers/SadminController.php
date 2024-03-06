@@ -16,4 +16,24 @@ class SadminController extends Controller
         $profiles =Profile::all();
         return view('admin.Utilisateur',compact('profiles'));
     }
+    public function Analytics()
+    {
+       $profiles = Profile::count();
+       $categories = Category::count();
+       $publication = Publication::count();
+       $Admins = Profile::where('role', 'Administrateur')->get();
+       
+        return view('admin.Analytics', compact('profiles','categories','publication','Admins'));
+    }
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('admin.categorie',compact('categories'));
+    }
+    public function AjouterCategories()
+    {
+        return view('admin.AjouterCategories');
+    }
+    
+
 }
