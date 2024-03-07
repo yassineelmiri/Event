@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::resource('publications', PublicationController::class);
+Route::resource('publication', PublicationController::class);
 Route::post('/publications/ajouter', [PublicationController::class, 'store'])->name('ajouter');
 Route::get('/filter', [PublicationController::class, 'filter'])->name('filter.publications');
 Route::get('/filte', [PublicationController::class, 'filterPublications'])->name('filter.titer');
