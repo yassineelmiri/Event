@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use App\Http\Controllers\Controller;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,8 +19,9 @@ class ProfileController extends Controller
     public function index()
     {
         $profiles = Profile::where('id', Auth::id())->firstOrFail();
-
-        return view('client.index', compact('profiles'));
+        $publication = Publication::where('profile_id', Auth::id())->get();
+      
+        return view('client.index', compact('profiles','publication'));
     }
 
     /**
@@ -45,9 +47,10 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Profile $profile)
+    public function storee(Request $request)
     {
-        //
+        
+        
     }
 
     /**
@@ -69,8 +72,10 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    
     public function destroy(Profile $profile)
     {
-        //
+        $profile->delete();
+        return to_route('profiles.index')->with('success', 'Le Profile a élé bien supprimer');
     }
 }

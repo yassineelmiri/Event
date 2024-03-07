@@ -69,11 +69,11 @@
                 <div id="tab-2" class="tab-content">
                     <form method="POST" action="{{ route('profiles.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="mt-9">
+                        <div class="lg:mt-5 mt-4">
                             <input type="name" placeholder="name" class="input_style__primary" name="name"
                                 value="{{ old('name') }}">
                         </div>
-                        <div class="mt-9">
+                        <div class="lg:mt-5 mt-4">
                             <input type="email" placeholder="name@example.com" class="input_style__primary"
                                 name="email" value="{{ old('email') }}">
                         </div>
@@ -92,7 +92,7 @@
                         <div class="lg:mt-5 mt-4">
                             <input type="text" placeholder="address :" name="address" class="input_style__primary">
                         </div>
-                        <div class="lg:mt-5 mt-4">
+                        <div class="lg:mt-5 mt-4 ">
                             <select class="input_style__primary"name="role" required>
                                 <option value="{{ old('role') }}">Select role</option>
                                 <option value="Utilisateur">Utilisateur</option>

@@ -71,8 +71,12 @@
                                             <td class="text-end border-t border-gray-100 dark:border-gray-800 p-4">
                                                 <a href="invoice.html"
                                                     class="py-1 px-4 inline-block font-semibold tracking-wide border align-middle duration-500 text-sm text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">modifier</a>
-                                                <a href="#"
-                                                    class="py-1 px-4 inline-block font-semibold tracking-wide border align-middle duration-500 text-sm text-center bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white rounded-md ms-2">supprimer</a>
+                                                    <form action="{{ route('categorie.destroy', $categorie->id) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button onclick="return confirm('Vouler vous vraiment supprimer la category')"
+                                                        class="py-1 px-4 inline-block font-semibold tracking-wide border align-middle duration-500 text-sm text-center bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white rounded-md ms-2">Supprimer</button>
+                                                    </form>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -18,7 +18,7 @@
             <span class="text-primary-1">
                 <i class="bi bi-people"></i>
             </span>
-            <span>{{ $publication->places_available }} People</span>
+            <span>{{ $publication->place_available }} People</span>
         </li>
         <li>
             <span class="text-primary-1">
@@ -30,6 +30,7 @@
             <span class="text-primary-1">
                 <i class="bi bi-coin"></i>
             </span>
+            {{ $publication->category }}
             </span>
         </li>
     </ul>

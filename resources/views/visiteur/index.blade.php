@@ -15,12 +15,12 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active_page">Package Sidebar</li>
+                    <li class="active_page">Package event</li>
                 </ol>
             </nav>
             <h2
                 class="xl:text-[54px] mt-2 lg:text-4xl md:text-2xl text-[30px] text-white leading-[1.3] font-medium max-w-[640px]">
-                Arid Most Popular Tours</h2>
+                Popular Eventes</h2>
         </div>
     </div>
     <!--========== BREADCRUMB STYLE END ==========-->
@@ -31,20 +31,17 @@
     <div class="bg-gradient-to-t to-[#FFF1EC] from-white z-1 relative">
         <div class="container">
             <div class="px-5 py-5 bg-white -translate-y-[55px]">
-                <form action="#" class="w-full" autocomplete="off">
+                <form action="{{ route('filter.publications') }}" method="GET" class="w-full"
+                    id="publicationFilterForm" autocomplete="off">
                     <div class="flex items-center lg:flex-row flex-col space-y-4 lg:space-y-0 lg:space-x-base">
                         <div class="relative flex-grow lg:w-auto w-full select_style__two">
 
-                            <select class="destination-select" name="state">
-                                <option value="0">Destinations</option>
-                                <option value="1">New York</option>
-                                <option value="2">London</option>
-                                <option value="3">Paris</option>
-                                <option value="4">Dubai</option>
-                                <option value="5">Miami</option>
-                                <option value="6">Amsterdam</option>
-                                <option value="7">Seattle</option>
-                                <option value="8">Las vegas</option>
+                            <select class="destination-select" name="category" id="categorySelect">
+                                <option value="">Selection category</option>
+
+                                @foreach ($category as $category)
+                                    <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
 
                             <div
@@ -61,7 +58,7 @@
                             </div>
                         </div>
                         <div class="relative  flex-grow lg:w-auto w-full">
-                            <input type="text" name="daterange" value="Select Date"
+                            <input type="text" name="daterange" id="daterange" value="Select Date"
                                 class="w-full bg-transparent border border-primary-1 outline-0 lg:h-17 h-14 pr-4 lg:pl-[60px] pl-[50px] lg:text-md text-base text-primary-1 placeholder:text-primary-1 font-medium" />
                             <div
                                 class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
@@ -79,27 +76,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="relative select_style__two flex-grow lg:w-auto w-full">
-                            <select class="destination-select" name="state">
-                                <option value="0">Tour Type</option>
-                                <option value="1">Honeymoon</option>
-                                <option value="2">Hill Traking</option>
-                                <option value="3">Day outing</option>
-                                <option value="4">River Cruise</option>
-                                <option value="5">Summer Vacation</option>
-                                <option value="5">Others</option>
-                            </select>
 
-                            <div
-                                class="absolute top-1/2 -translate-y-1/2 left-5 lg:left-base max-w-[20px] text-primary-1">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M17.66 8.32885C17.2489 8.32441 16.84 8.30441 16.4311 8.33552C16.1489 8.35552 15.9889 8.23552 15.8489 8.01774C15.3689 7.27552 14.8667 6.54663 14.4 5.79552C14.1178 5.33996 13.72 5.13107 13.2089 5.08441C13.1067 5.07552 13.0067 5.05107 12.9045 5.04441C12.4956 5.01329 12.0956 4.87552 11.6845 4.92663C10.5489 5.06663 9.4178 5.21774 8.28446 5.37774C7.87335 5.43552 7.58224 5.66885 7.45113 6.07107C7.20891 6.81107 6.96669 7.55552 6.7378 8.29996C6.68669 8.46441 6.62224 8.63107 6.66002 8.81552C6.74669 9.22663 7.16002 9.6333 7.52224 9.65329C8.06002 9.68441 8.44224 9.43107 8.60446 8.93107L9.09335 7.44885C9.12446 7.3533 9.14446 7.25774 9.28224 7.24663C9.54002 7.22218 9.80002 7.18218 10.0534 7.13774C10.2711 7.09774 10.3 7.16218 10.2467 7.37107C9.94669 8.51774 9.66224 9.66885 9.36891 10.8177C9.11558 11.8111 9.34891 12.4289 10.1911 13.0044C11.1778 13.6755 12.16 14.3489 13.1467 15.0155C13.3045 15.1222 13.3867 15.24 13.4178 15.4355C13.5956 16.5644 13.7845 17.6911 13.9778 18.8177C14.0778 19.4022 14.5978 19.8 15.1356 19.7133C15.7356 19.62 16.1134 19.0844 16.0134 18.4688C15.7911 17.1311 15.5645 15.7933 15.34 14.4555C15.2845 14.1355 15.1134 13.8911 14.8534 13.7044C14.1867 13.2289 13.5267 12.7422 12.8511 12.28C12.66 12.1488 12.6356 12.0222 12.68 11.82C12.9222 10.7244 13.1556 9.62663 13.3934 8.52885C13.4222 8.39552 13.4578 8.26663 13.5089 8.05329C13.8756 8.61552 14.2178 9.10441 14.5222 9.61774C14.7845 10.0622 15.1222 10.3355 15.6622 10.3266C16.3245 10.3155 16.9845 10.3266 17.6467 10.3222C18.2578 10.3177 18.7045 9.89552 18.7067 9.33107C18.7111 8.76218 18.2645 8.33552 17.66 8.32885ZM6.90891 10.2733C6.63335 10.2977 6.50891 10.4822 6.44224 10.72C6.29335 11.2666 6.13558 11.8089 6.00224 12.36C5.95113 12.5755 5.86669 12.5866 5.67113 12.54C5.12002 12.4111 4.58891 12.2044 4.17113 12.1777C3.24224 12.18 2.56891 12.6688 2.3578 13.4266C2.00002 14.7133 1.6578 16.0044 1.32002 17.2977C1.18669 17.8044 1.46891 18.2777 1.9778 18.4222C2.31558 18.5177 2.66002 18.5955 3.00002 18.6911C3.15558 18.7333 3.20669 18.6955 3.22447 18.5266C3.34891 17.3711 4.4978 16.6666 5.58446 17.0822C5.7578 17.1488 5.81558 17.1422 5.86446 16.9466C6.04446 16.2066 6.24669 15.4755 6.44224 14.74C6.7778 13.4666 7.11335 12.1911 7.44446 10.9177C7.54224 10.5355 7.29113 10.24 6.90891 10.2733ZM13.3556 4.28218C14.4489 4.28885 15.3578 3.37107 15.3556 2.26885C15.3511 1.18218 14.4467 0.277739 13.36 0.275517C12.2667 0.273295 11.3467 1.17329 11.3467 2.24663C11.3489 3.37996 12.2311 4.27774 13.3556 4.28218ZM10.4111 14.0733C9.86891 13.6911 9.24669 13.3977 8.86002 12.7377C8.34891 14.6822 7.85558 16.5577 7.36002 18.4355C7.32002 18.5933 7.30669 18.7444 7.34891 18.9022C7.47558 19.3933 7.87335 19.7177 8.35335 19.7177C8.83558 19.7177 9.22446 19.4 9.36446 18.8733L10.5445 14.4311C10.5889 14.2711 10.56 14.1777 10.4111 14.0733ZM4.97558 17.7244C4.43335 17.7177 3.97335 18.1688 3.96669 18.7089C3.96002 19.2533 4.40669 19.7111 4.95113 19.7177C5.49113 19.7266 5.95335 19.2755 5.96002 18.7333C5.96891 18.1911 5.5178 17.7288 4.97558 17.7244Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
-                        </div>
                         <button type="submit"
                             class="block lg:w-auto w-full flex-grow text-center bg-primary-1 lg:h-17 h-14  text-white font-medium text-md hover:bg-[#d0aa6c] duration-300">FIND
                             NOW</button>
@@ -117,7 +94,7 @@
             <div class="grid grid-cols-12 lg:gap-12 gap-base">
                 <div class="lg:col-span-8 col-span-12 grid md:grid-cols-2 grid-cols-1 gap-base">
                     @foreach ($publication as $publication)
-                       <x-publication :publication="$publication"/>
+                        <x-publication :publication="$publication" />
                     @endforeach
                     <div class="group/card package-card-style-one ">
                         <div class="overflow-hidden relative">
@@ -267,7 +244,49 @@
                     <div class="pb-[10px] mb-8 border-b border-dark-1 border-opacity-10">
                         <h4 class="text-lg font-semibold text-dark-1">Filter by :</h4>
                     </div>
+                    <aside>
+                        <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Categories</h5>
 
+                        <ul class="pt-4">
+
+                            @foreach ($categoryA as $category)
+                                <li class="pt-3 first:pt-0">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" value="category" id="cate-one">
+                                        <label for="cate-one">{{ $category->name }}</label>
+                                    </div>
+                                </li>
+                            @endforeach
+
+
+                        </ul>
+
+                    </aside>
+
+                    <div
+                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
+                    </div>
+
+                    <aside>
+                        <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Filter Par Titer: </h5>
+                        <div class="range-slider pt-4" id="range-slider">
+                            <form action="{{ route('filter.titer') }}" method="GET" class="w-full" id="publicationFilterForm" autocomplete="off">
+                                <div class="flex items-center border border-primary-1 rounded-lg overflow-hidden">
+                                    <input type="text" name="titel" placeholder="Search by title"
+                                        class="flex-grow bg-transparent border-none outline-none h-14 px-4 text-md text-primary-1 placeholder-primary-1 font-medium">
+                                    <button type="submit" class="bg-primary-1 text-white font-medium px-6 py-3 hover:bg-[#d0aa6c] duration-300">FIND NOW</button>
+                                </div>
+                            </form>
+                        </div>
+                    </aside>
+                    
+                    
+                    <div
+                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
+                    </div>
+
+
+                    
                     <aside>
                         <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Filter Price: </h5>
                         <div class="range-slider pt-4" id="range-slider">
@@ -279,172 +298,17 @@
                                     readonly style="border:0;">
                             </div>
                         </div>
+
+                       
+                        
                     </aside>
+                    
+
+
 
                     <div
                         class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
                     </div>
-
-                    <aside>
-                        <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Categories</h5>
-
-                        <ul class="pt-4">
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="cate-one">
-                                    <label for="cate-one">Adventure</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="cate-two">
-                                    <label for="cate-two">Day Long Tours</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="cate-three">
-                                    <label for="cate-three">Cruise Tours</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="cate-four">
-                                    <label for="cate-four">Honeymoon</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="cate-five">
-                                    <label for="cate-five">City Tours</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="cate-six">
-                                    <label for="cate-six">Museum Tours</label>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </aside>
-
-                    <div
-                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
-                    </div>
-
-                    <aside>
-                        <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">Destinations</h5>
-
-                        <ul class="pt-4">
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="des-one">
-                                    <label for="des-one">Singapore</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="des-two">
-                                    <label for="des-two">Italy</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="des-three">
-                                    <label for="des-three">Thailand</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="des-four">
-                                    <label for="des-four">Hong Kong</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="des-five">
-                                    <label for="des-five">City Tours</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="des-six">
-                                    <label for="des-six">Maldives</label>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </aside>
-
-                    <div
-                        class="sidebar-devider my-8 h-[3px] bg-[url('https://arid-html.vercel.app/main-file/images/illustration/wave.svg')] bg-repeat">
-                    </div>
-
-
-                    <aside>
-                        <h5 class="font-sans lg:text-md text-base pb-2 font-semibold text-dark-1">
-                            Duration
-                        </h5>
-
-                        <ul class="pt-4">
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="d1">
-                                    <label for="d1">2 - 8 hours</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="d2">
-                                    <label for="d2">Fullday (+8 hours)</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="d3">
-                                    <label for="d3">2 - 4 Days</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="d4">
-                                    <label for="d4">3 - 5 Days</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="d5">
-                                    <label for="d5">5 -7 days</label>
-                                </div>
-                            </li>
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="d6">
-                                    <label for="d6">More Then 7 Days</label>
-                                </div>
-                            </li>
-
-                        </ul>
-                        <!-- <ul class="pt-4">
-                            <li class="pt-3 first:pt-0">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" value="category" id="r5">
-                                    <label for="r5">
-                                        <ul class="inline-flex text-sm">
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                            <li><i class="bi bi-star-fill"></i></li>
-                                        </ul>
-                                    </label>
-                                </div>
-                            </li>
-                        </ul> -->
-
-                    </aside>
-
 
                     <aside class="widget widget_blogs lg:mt-[50px] mt-10">
                         <div class="pb-[10px] mb-8 border-b border-dark-1 border-opacity-10">

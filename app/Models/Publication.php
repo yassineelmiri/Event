@@ -14,11 +14,12 @@ class Publication extends Model
     protected $fillable = [
         'titel',
         'description',
-        'places_available',
+        'place_available',
         'category',
         'location',
         'date',
         'image',
+        'status',
         'profile_id'
     ];
     public function getImageAttribute($value)

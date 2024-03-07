@@ -25,40 +25,44 @@
                 <div class="grid grid-cols-12 lg:gap-12 gap-base">
                     <div class="lg:col-span-8 col-span-12">
                         <div class="px-5 py-4 bg-primary-1 bg-opacity-20 text-dark-2 lg:text-base text-sm">
-                            Sign in with your saved information to book, or <a href="{{route('login')}}"
+                            Sign in with your saved information to book, or <a href="{{ route('login') }}"
                                 class="font-semibold text-dark-1">register</a> to manage your reservations on the go!
                         </div>
+                        <form method="POST">
+                            <h5 class="text-dark-1 lg:text-[22px] text-2md font-semibold mt-base mb-7">about
+                                yourself.</h5>
 
-                        <h5 class="text-dark-1 lg:text-[22px] text-2md font-semibold mt-base mb-7">about
-                            yourself.</h5>
+                            <div class="grid grid-cols-2 lg:gap-7 gap-5">
+                                <div class="col-span-2">
+                                    <label for="" class="text-dark-2 block mb-2">Full Name</label>
+                                    <input type="text" value="{{ Auth::user()->name }}" class="input_style__primary"
+                                        readonly readonly>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="" class="text-dark-2 block mb-2">Email</label>
+                                    <input type="text" value="{{ Auth::user()->email }}" class="input_style__primary"
+                                        readonly readonly>
+                                </div>
+                                <div class="lg:col-span-1 col-span-2">
+                                    <label for="" class="text-dark-2 block mb-2">Phone Number</label>
+                                    <input type="text" value="{{ Auth::user()->telephone }}"
+                                        class="input_style__primary" readonly>
+                                </div>
+                                <div class="lg:col-span-1 col-span-2">
+                                    <label for="" class="text-dark-2 block mb-2">Your Address</label>
+                                    <input type="text" value="{{ Auth::user()->address }}"
+                                        class="input_style__primary" readonly>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="" class="text-dark-2 block mb-2">Additional Massage</label>
+                                    <textarea cols="30" rows="7" class="input_style__primary" value="Write Here..."></textarea>
+                                </div>
+                                <div class="custom-checkbox col-span-2">
+                                    <input type="checkbox" value="agree2" id="agree2">
+                                    <label for="agree2">I agree to Arid Terms of Use and Privacy Policy.</label>
+                                </div>
 
-                        <div class="grid grid-cols-2 lg:gap-7 gap-5">
-                            <div class="col-span-2">
-                                <label for="" class="text-dark-2 block mb-2">Full Name</label>
-                                <input type="text" value="{{Auth::user()->name}}" class="input_style__primary" readonly readonly>
                             </div>
-                            <div class="lg:col-span-1 col-span-2">
-                                <label for="" class="text-dark-2 block mb-2">Email</label>
-                                <input type="text" value="{{Auth::user()->email}}" class="input_style__primary" readonly readonly>
-                            </div>
-                            {{-- <div class="lg:col-span-1 col-span-2">
-                                <label for="" class="text-dark-2 block mb-2">Phone Number</label>
-                                <input type="text" value="{{Auth::user()->telephone}}" class="input_style__primary" readonly>
-                            </div>
-                            <div class="col-span-2">
-                                <label for="" class="text-dark-2 block mb-2">Your Address</label>
-                                <input type="text" value="{{Auth::user()->address}}" class="input_style__primary" readonly>
-                            </div> --}}
-                            <div class="col-span-2">
-                                <label for="" class="text-dark-2 block mb-2">Additional Massage</label>
-                                <textarea cols="30" rows="7" class="input_style__primary" value="Write Here..."></textarea>
-                            </div>
-                            <div class="custom-checkbox col-span-2">
-                                <input type="checkbox" value="agree2" id="agree2">
-                                <label for="agree2">I agree to Arid Terms of Use and Privacy Policy.</label>
-                            </div>
-
-                        </div>
                     </div>
                     <div class="lg:col-span-4 col-span-12">
                         <h5 class="text-dark-1 lg:text-[22px] text-2md font-semibold">
@@ -80,7 +84,7 @@
                                 </ul>
                                 <h5
                                     class="lg:text-md mt-1 text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
-                                    <a href="package-details.html">{{$publication->titel}}</a>
+                                    <a href="package-details.html">{{ $publication->titel }}</a>
                                 </h5>
                                 <div class="mt-[5px] text-dark-2">
                                     <span>
@@ -98,13 +102,17 @@
                         <div class="grid grid-cols-2 items-center">
                             <div class="col-span-1 border-r border-stock-1">
                                 <span class="text-sm text-dark-3">Check-in</span>
-                                <h5 class="lg:text-2md text-md font-semibold text-dark-1 pb-1">{{ now()->format('Y-m-d') }}</h5>
-                                <span class="text-sm text-dark-3">Time : <span class="text-dark-2 font-medium">{{ now()->format('H:i:s') }}</span> </span>
+                                <h5 class="lg:text-2md text-md font-semibold text-dark-1 pb-1">
+                                    {{ now()->format('Y-m-d') }}</h5>
+                                <span class="text-sm text-dark-3">Time : <span
+                                        class="text-dark-2 font-medium">{{ now()->format('H:i:s') }}</span> </span>
                             </div>
                             <div class="col-span-1 border-r border-stock-1">
                                 <span class="text-sm text-dark-3">Check-out</span>
-                                <h5 class="lg:text-2md text-md font-semibold text-dark-1 pb-1">{{ $publication->date }}</h5>
-                                <span class="text-sm text-dark-3">Time : <span class="text-dark-2 font-medium">12:02:25</span> </span>
+                                <h5 class="lg:text-2md text-md font-semibold text-dark-1 pb-1">{{ $publication->date }}
+                                </h5>
+                                <span class="text-sm text-dark-3">Time : <span
+                                        class="text-dark-2 font-medium">12:02:25</span> </span>
                             </div>
                         </div>
 
@@ -135,36 +143,42 @@
                         <div class="grid grid-cols-2 lg:gap-7 gap-5">
                             <div class="lg:col-span-1 col-span-2">
                                 <label for="" class="text-dark-2 block mb-2">Name</label>
-                                <input type="text" value="{{$publication->titel}}" class="input_style__primary" readonly >
+                                <input type="text" value="{{ $publication->titel }}" class="input_style__primary"
+                                    readonly>
                             </div>
                             <div class="lg:col-span-1 col-span-2">
                                 <label for="" class="text-dark-2 block mb-2">Number places</label>
-                                <input type="text" value="{{$publication->places_available}}" class="input_style__primary" readonly>
+                                <input type="text" value="{{ $publication->place_available }}"
+                                    class="input_style__primary" readonly>
                             </div>
                             <div class="lg:col-span-1 col-span-2">
                                 <label for="" class="text-dark-2 block mb-2">date</label>
-                                <input type="text" value="{{$publication->date}}" class="input_style__primary" readonly >
+                                <input type="text" value="{{ $publication->date }}" class="input_style__primary"
+                                    readonly>
                             </div>
                             <div class="lg:col-span-1 col-span-2">
                                 <label for="" class="text-dark-2 block mb-2">location</label>
-                                <input type="text" value="{{$publication->location}}" class="input_style__primary" readonly>
+                                <input type="text" value="{{ $publication->location }}"
+                                    class="input_style__primary" readonly>
                             </div>
                             <div class="lg:col-span-1 col-span-2">
                                 <label for="" class="text-dark-2 block mb-2">Description</label>
-                                <input type="text" value="{{$publication->description}}" class="input_style__primary" readonly>
+                                <input type="text" value="{{ $publication->description }}"
+                                    class="input_style__primary" readonly>
                             </div>
                             <div class="lg:col-span-1 col-span-2">
                                 <label for="" class="text-dark-2 block mb-2">category</label>
-                                <input type="text" value="{{$publication->category}}" class="input_style__primary" readonly>
+                                <input type="text" value="{{ $publication->category }}"
+                                    class="input_style__primary" readonly>
                             </div>
                         </div>
                         <div class="pt-6 mt-8 border-t border-stock-1">
                             <label for="" class="text-dark-2 block mb-2">Do you have a promo code?</label>
-                            <input type="text" placeholder="Entre you code promo" class="input_style__primary" >
+                            <input type="text" placeholder="Entre you code promo" class="input_style__primary">
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
             <div class="tab">
@@ -180,11 +194,13 @@
                         <div class="grid lg:grid-cols-4 grid-cols-2 gap-4">
                             <div class="col-span-1 text-dark-3">
                                 <p>Order Number</p>
-                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">{{$publication->places_available}}</p>
+                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">
+                                    {{ $publication->place_available }}</p>
                             </div>
                             <div class="col-span-1 text-dark-3">
                                 <p>Date</p>
-                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">{{$publication->date}}</p>
+                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">
+                                    {{ $publication->date }}</p>
                             </div>
                             <div class="col-span-1 text-dark-3">
                                 <p>Total</p>
@@ -198,7 +214,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="lg:pt-14 pt-10 text-center">
                 <button type="button" id="prevBtn" class="btn_primary__v1 outlined mr-5">
                     Previous
@@ -214,6 +229,9 @@
                     </svg>
                 </button>
             </div>
+            </form>
+
+            
         </div>
     </div>
     <!--========== Booking Form End ==========-->

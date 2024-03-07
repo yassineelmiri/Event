@@ -124,12 +124,12 @@
                                     <div class="flex items-center mt-3">
                                         <i data-feather="bookmark" class="fea icon-ex-md text-slate-400 me-3"></i>
                                         <div class="flex-1">
-                                            <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Skills
+                                            <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Permision
                                                 :</h6>
                                             <a href="#" class="text-slate-400">MVC</a>, <a href="#"
                                                 class="text-slate-400">CRUD</a>, <a href="#"
-                                                class="text-slate-400">POO</a>, <a href="#"
-                                                class="text-slate-400">mysql</a>
+                                                class="text-slate-400">Category</a>, <a href="#"
+                                                class="text-slate-400">valider</a>
                                         </div>
                                     </div>
                                     <div class="flex items-center mt-3">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -77,9 +78,13 @@ class AuthController extends Controller
     public function afficher()
     {
         $publication = Publication::paginate(8);
-        return view('visiteur.index', compact('publication'));
+        // $publication = Publication::all();
+        $category = Category::all();
+        $categoryA = Category::all();
+        return view('visiteur.index', compact('publication','category','categoryA'));
 
     }
+    
     public function show(Publication $publication)
     {
         return view('visiteur.show', compact('publication'));

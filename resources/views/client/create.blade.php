@@ -24,8 +24,8 @@
                     </div>
                     <div class="lg:col-span-1 col-span-2">
                         <input type="number" placeholder="Nombre de places" class="input_style__primary"
-                            name="places_available">
-                        @error('places_available')
+                            name="place_available">
+                        @error('place_available')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -49,6 +49,7 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    
                     <div class="col-span-2">
                         <input type="file" class="input_style__primary" name="image">
                         @error('image')
@@ -60,6 +61,9 @@
                         @error('description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="col-span-2">
+                        <input type="hidden" name="status" value="Non validé">
                     </div>
                     <div class="col-span-2">
                         <button type="submit" onclick="confirm('Voulez-vous vraiment ajouter?')"
