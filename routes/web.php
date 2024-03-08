@@ -3,6 +3,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SadminController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ Route::resource('publications', PublicationController::class);
 Route::post('/publications/ajouter', [PublicationController::class, 'store'])->name('ajouter');
 Route::get('/filter', [PublicationController::class, 'filter'])->name('filter.publications');
 Route::get('/filte', [PublicationController::class, 'filterPublications'])->name('filter.titer');
-
+Route::post('/valider',[PublicationController::class, 'ValiderReservation'])->name('reservation');
 Route::get('/utilisateur', [SadminController::class, 'utilisateur'])->name('admin.utilisateur');
 Route::get('/Analytics', [SadminController::class, 'Analytics'])->name('admin.Analytics');
 Route::get('/list_rest_password', [SadminController::class, 'ListPassword'])->name('list.password');
@@ -41,3 +42,5 @@ Route::post('/Forgot-password', [AuthController::class, 'ForgotPost'])->name('Fo
 Route::get('/reset-password{token}', [AuthController::class, 'ResetPassword'])->name('reset.password');
 Route::post('/reset-password', [AuthController::class, 'ResetPasswordPost'])->name('reset.password.post');
 Route::get('/Login',[AuthController::class,'index'])->name('login.show');
+Route::DELETE('/destroy',[ReservationController::class,'destroy'])->name('destroy.reservation');
+

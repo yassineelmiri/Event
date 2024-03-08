@@ -181,39 +181,56 @@
 
                 </div>
             </div>
+            </form>
             <div class="tab">
-                <div class="text-center max-w-[1000px] mx-auto">
-                    <div
-                        class="lg:h-16 lg:w-16 w-12 h-12 rounded-full bg-primary-1 lg:text-xl text-2md text-white flex justify-center items-center mx-auto">
-                        <i class="bi bi-check-lg"></i>
-                    </div>
-                    <h4 class="lg:text-lg text-2md font-semibold text-dark-2 mt-4">Your order is on its way! <br> Check
-                        your email for delivery timing and order details</h4>
+                <form action="{{ route('reservation') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="profile_id" value="{{Auth::user()->id}}">
+                    <input type="hidden" name="publication_id" value="{{$publication->id}}">
 
-                    <div class="mt-10 px-5 py-4 border border-primary-1 border-dashed">
-                        <div class="grid lg:grid-cols-4 grid-cols-2 gap-4">
-                            <div class="col-span-1 text-dark-3">
-                                <p>Order Number</p>
-                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">
-                                    {{ $publication->place_available }}</p>
-                            </div>
-                            <div class="col-span-1 text-dark-3">
-                                <p>Date</p>
-                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">
-                                    {{ $publication->date }}</p>
-                            </div>
-                            <div class="col-span-1 text-dark-3">
-                                <p>Total</p>
-                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">Gratuit</p>
-                            </div>
-                            <div class="col-span-1 text-dark-3">
-                                <p>Status</p>
-                                <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">Desponible</p>
+                    <div class="text-center max-w-[1000px] mx-auto">
+
+                        <div
+                            class="lg:h-16 lg:w-16 w-12 h-12 rounded-full bg-primary-1 lg:text-xl text-2md text-white flex justify-center items-center mx-auto">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <h4 class="lg:text-lg text-2md font-semibold text-dark-2 mt-4">Your order is on its way! <br>
+                            Check
+                            your email for delivery timing and order details</h4>
+
+                        <div class="mt-10 px-5 py-4 border border-primary-1 border-dashed">
+                            <div class="grid lg:grid-cols-4 grid-cols-2 gap-4">
+                                <div class="col-span-1 text-dark-3">
+                                    <p>Order Number</p>
+                                    <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">
+                                        {{ $publication->place_available }}</p>
+                                </div>
+                                <div class="col-span-1 text-dark-3">
+                                    <p>Date</p>
+                                    <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">
+                                        {{ $publication->date }}</p>
+                                </div>
+                                <div class="col-span-1 text-dark-3">
+                                    <p>Total</p>
+                                    <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">Gratuit</p>
+                                </div>
+                                <div class="col-span-1 text-dark-3">
+                                    <p>Status</p>
+                                    <p class="mt-2 font-semibold text-dark-1 lg:text-md text-base">Desponible</p>
+                                </div>
                             </div>
                         </div>
+                        <button type="submit" class="btn_primary__v1 outlined mr-5">
+                            valider
+                        </button>
                     </div>
-                </div>
+                    
+                    
+                </form>
             </div>
+
+
+
             <div class="lg:pt-14 pt-10 text-center">
                 <button type="button" id="prevBtn" class="btn_primary__v1 outlined mr-5">
                     Previous
@@ -229,9 +246,6 @@
                     </svg>
                 </button>
             </div>
-            </form>
-
-            
         </div>
     </div>
     <!--========== Booking Form End ==========-->

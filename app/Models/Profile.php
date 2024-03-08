@@ -25,4 +25,8 @@ class Profile extends Model
     {
         return $this->hasMany(Publication::class);
     }
+    public function reservation()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

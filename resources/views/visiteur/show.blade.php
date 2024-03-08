@@ -48,7 +48,7 @@
                         <span class="text-primary-1 lg:text-2md text-md">(20 review)</span>
                     </div>
                 </div>
-                
+
             </div>
             <div class="grid grid-cols-12 gap-base">
                 <div class="lg:col-span-8 col-span-12">
@@ -473,14 +473,14 @@
                                     <input type="text" placeholder="Your Name" class="input_style__primary">
                                 </div>
                                 <div class="lg:col-span-1 col-span-2">
-                                    <input type="text" placeholder="Your Phone Number" class="input_style__primary">
+                                    <input type="text" placeholder="Your Phone Number"
+                                        class="input_style__primary">
                                 </div>
                                 <div class="col-span-2">
                                     <input type="email" placeholder="Your Subject" class="input_style__primary">
                                 </div>
                                 <div class="col-span-2">
-                                    <textarea cols="30" rows="6" class="input_style__primary"
-                                        placeholder="Your Subject..."></textarea>
+                                    <textarea cols="30" rows="6" class="input_style__primary" placeholder="Your Subject..."></textarea>
                                 </div>
                                 <div class="col-span-2">
                                     <button type="submit" class="btn_primary__v1">
@@ -498,110 +498,156 @@
                         <li class="tab-link basis-1/2" data-tab="4">Enquiry</li>
                     </ul>
                     <div id="tab-3" class="tab-content active">
-                       
-                       
+
+
                         <form action="" method="GET" autocomplete="off"
                             class="lg:px-base px-5 lg:pt-6 lg:pb-base pt-4 pb-5 bg-white border-primary-1 border">
                             <h4 class="lg:text-xl text-lg text-dark-1 font-semibold"><span
                                     class="text-md font-sans font-normal text-dark-3">Start from</span> Gratuit</h4>
                             <div class="mt-5 lg:mt-6">
                                 <label for="tourTime" class="mb-2 text-dark-3 capitalize block">Date</label>
-                                <input type="date" class="input_style__primary" value="{{$publication->date}}" readonly />
+                                <input type="date" class="input_style__primary" value="{{ $publication->date }}"
+                                    readonly />
                             </div>
                             <div class="mt-5 lg:mt-6">
-                                <label  class="mb-2 text-dark-3 capitalize block">Lieu</label>
-                                <input type="text" class="input_style__primary" value="{{$publication->location}}" readonly />
+                                <label class="mb-2 text-dark-3 capitalize block">Lieu</label>
+                                <input type="text" class="input_style__primary"
+                                    value="{{ $publication->location }}" readonly />
                             </div>
-                            
+
                             <div class="js-form-counters lg:mt-6 mt-5 relative">
-                                <label for="tourTime" class="mb-2 text-dark-3 capitalize block">Number of travelers</label>
-                                <button type="button" class="w-full bg-transparent border border-stock-1 lg:h-[54px] h-12 px-5 py-2 text-dark-2 focus:border-primary-1 flex items-center common_dropdown__btn" name="place">
+                                <label for="tourTime" class="mb-2 text-dark-3 capitalize block">Number of
+                                    travelers</label>
+                                <button type="button"
+                                    class="w-full bg-transparent border border-stock-1 lg:h-[54px] h-12 px-5 py-2 text-dark-2 focus:border-primary-1 flex items-center common_dropdown__btn"
+                                    name="place">
                                     <div>
                                         <span class="js-count-adult">1</span> adults
-                                    -
-                                    <span class="js-count-child">0</span> childeren
-                                    -
-                                    <span class="js-count-room">1</span> voiture
+                                        -
+                                        <span class="js-count-child">0</span> childeren
+                                        -
+                                        <span class="js-count-room">1</span> voiture
                                     </div>
-                                  </button>
+                                </button>
 
-                                  <!-- count dropdown -->
-                                  <div class="common__dropdown person-dropdown space-y-4 opacity-0 absolute w-full left-0 top-full invisible bg-white translate-y-3 duration-200 z-10">
+                                <!-- count dropdown -->
+                                <div
+                                    class="common__dropdown person-dropdown space-y-4 opacity-0 absolute w-full left-0 top-full invisible bg-white translate-y-3 duration-200 z-10">
 
                                     <!-- adult count -->
-                                    <div class="js-counter flex justify-between items-center" data-value-change=".js-count-adult">
+                                    <div class="js-counter flex justify-between items-center"
+                                        data-value-change=".js-count-adult">
                                         <p class="text-dark-1">Adult</p>
                                         <div class="flex items-center space-x-4">
-                                            <button type="button" class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
+                                            <button type="button"
+                                                class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
                                                 <i class="bi bi-dash-lg"></i>
-                                              </button>
-                                      
-                                              <div class="js-count text-dark-1 lg:ext-md">2</div>
-                                      
-                                              <button type="button" class="js-up h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
-                                                <i class="bi bi-plus-lg"></i>
-                                              </button>
-                                        </div>
-                                      </div>
+                                            </button>
 
-                                      <!-- children count  -->
-                                    <div class="js-counter flex justify-between items-center" data-value-change=".js-count-child">
+                                            <div class="js-count text-dark-1 lg:ext-md">2</div>
+
+                                            <button type="button"
+                                                class="js-up h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
+                                                <i class="bi bi-plus-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- children count  -->
+                                    <div class="js-counter flex justify-between items-center"
+                                        data-value-change=".js-count-child">
                                         <p class="text-dark-1">Childeren</p>
                                         <div class="flex items-center space-x-4">
-                                            <button type="button" class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
+                                            <button type="button"
+                                                class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
                                                 <i class="bi bi-dash-lg"></i>
-                                              </button>
-                                      
-                                              <div class="js-count text-dark-1 lg:ext-md">0</div>
-                                      
-                                              <button type="button" class="js-up h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
-                                                <i class="bi bi-plus-lg"></i>
-                                              </button>
-                                        </div>
-                                      </div>
+                                            </button>
 
-                                    <div class="js-counter flex justify-between items-center" data-value-change=".js-count-room">
+                                            <div class="js-count text-dark-1 lg:ext-md">0</div>
+
+                                            <button type="button"
+                                                class="js-up h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
+                                                <i class="bi bi-plus-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="js-counter flex justify-between items-center"
+                                        data-value-change=".js-count-room">
                                         <p class="text-dark-1 ">voiture</p>
                                         <div class="flex items-center space-x-4">
-                                            <button type="button" class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
+                                            <button type="button"
+                                                class="js-down h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
                                                 <i class="bi bi-dash-lg"></i>
-                                              </button>
-                                      
-                                              <div class="js-count text-dark-1 lg:ext-md">1</div>
-                                      
-                                              <button type="button" class="js-up h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
+                                            </button>
+
+                                            <div class="js-count text-dark-1 lg:ext-md">1</div>
+
+                                            <button type="button"
+                                                class="js-up h-[38px] w-[38px] border border-primary-1 flex items-center justify-center rounded-full text-dark-1 hover:bg-primary-1 hover:text-white duration-150">
                                                 <i class="bi bi-plus-lg"></i>
-                                              </button>
+                                            </button>
                                         </div>
-                                      </div>
-                                  </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="pt-4">
                                 <div class="custom-checkbox mt-4">
                                     <input type="checkbox" value="$30" id="add-one" name="vip">
-                                    <label for="add-one">Add Service per VIP - <span class="font-semibold">$30</span></label>
+                                    <label for="add-one">Add Service per VIP - <span
+                                            class="font-semibold">$30</span></label>
                                 </div>
                             </div>
 
                             <div class="pt-5 border-t border-stock-1 mt-6">
-                                <div class="font-sans text-dark-1 text-2md font-semibold flex justify-between">Status : <span>Disponible</span></div>
+                                <div class="font-sans text-dark-1 text-2md font-semibold flex justify-between">Status :
+                                    <span>Disponible</span>
+                                </div>
                             </div>
 
-                            <button class="capitalize w-full text-center underline duration-150 mt-4 text-dark-1 font-medium flex items-center justify-center hover:text-primary-1">check availability </button>
-                            <a href="{{ route('show.reservation',$publication->id) }}" class="btn_primary__v1 !w-full justify-center mt-5">
-                                reservation 
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M7.42505 16.5999L12.8584 11.1666C13.5 10.5249 13.5 9.4749 12.8584 8.83324L7.42505 3.3999"
-                                        stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
-                                        stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </a>
-                       
+                            <button
+                                class="capitalize w-full text-center underline duration-150 mt-4 text-dark-1 font-medium flex items-center justify-center hover:text-primary-1">check
+                                availability </button>
 
-                                              
+                            @php
+                                $count = 0;
+                            @endphp
+                            @foreach ($reservations as $reservation)
+                                @if ($reservation->publication_id === $publication->id)
+                                    @php
+                                        $count++;
+                                    @endphp
+                                @endif
+                            @endforeach
+
+                            @if ("$count" === $publication->place_available)
+                                <div class="bg-gray-100 p-4">
+                                    <div class="bg-white p-4 rounded-lg shadow-md">
+                                        <div class="text-center">
+                                            <h5 class="text-xl font-bold text-gray-800" style="background-color: red">
+                                                Indisponible</h5>
+                                            <p class="text-gray-600">Ce type d'événement n'est pas disponible plan.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <h5 class="text-xl text-center font-bold text-gray-800"
+                                    style="background-color: green">disponible
+                                    {{ $count }}/{{ $publication->place_available }}</h5>
+
+                                <a href="{{ route('show.reservation', $publication->id) }}"
+                                    class="btn_primary__v1 !w-full justify-center mt-5">
+                                    reservation
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.42505 16.5999L12.8584 11.1666C13.5 10.5249 13.5 9.4749 12.8584 8.83324L7.42505 3.3999"
+                                            stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                            @endif
                         </form>
                     </div>
 
@@ -621,8 +667,7 @@
                                 <input type="tel" placeholder="Mobile Number" class="input_style__primary">
                             </div>
                             <div class="lg:mt-base mt-5">
-                                <textarea cols="30" rows="6" class="input_style__primary"
-                                    placeholder="Additional Description..."></textarea>
+                                <textarea cols="30" rows="6" class="input_style__primary" placeholder="Additional Description..."></textarea>
                             </div>
                             <button class="btn_primary__v1 !w-full justify-center mt-5">
                                 Enquiry
@@ -648,11 +693,16 @@
                                 </a>
                                 <div class="grow">
                                     <ul class="text-sm text-orange-500">
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i></li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i>
+                                        </li>
                                     </ul>
                                     <h5
                                         class="lg:text-md mt-1 text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
@@ -673,11 +723,16 @@
                                 </a>
                                 <div class="grow">
                                     <ul class="text-sm text-orange-500">
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i></li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i>
+                                        </li>
                                     </ul>
                                     <h5
                                         class="lg:text-md mt-1 text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
@@ -698,11 +753,16 @@
                                 </a>
                                 <div class="grow">
                                     <ul class="text-[13px] text-orange-500">
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i></li>
-                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i></li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-fill"></i>
+                                        </li>
+                                        <li class="mr-[2px] last:mr-0 inline-block"><i class="bi bi-star-half"></i>
+                                        </li>
                                     </ul>
                                     <h5
                                         class="lg:text-md mt-[3px] text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">

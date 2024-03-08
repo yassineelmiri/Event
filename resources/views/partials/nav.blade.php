@@ -153,7 +153,7 @@
                         stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
-                <span class="ml-2">panier (01)</span>
+                <span class="ml-2">panier</span>
             </a>
             <a href="{{ route('profiles.index') }}"
                 class="shrink-0 inline-flex justify-center items-center bg-primary-1 rounded-full h-12 w-12 text-white hover:bg-primary-2 duration-300">

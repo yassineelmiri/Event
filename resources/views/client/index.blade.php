@@ -104,7 +104,7 @@
                         </div>
 
 
-                        <form action="#" class="pt-3">
+                        <form action="{{ route('reclamation.site')}}" class="pt-3">
                             <h3
                                 class="lg:text-2xl md:text-xl text-lg text-dark-1 leading-[1.42] font-medium mt-[10px] mb-[14px]">
                                 Reclamation de Site Web</h3>
@@ -150,28 +150,32 @@
                                 </div>
                             </form>
                         </aside>
+
                         <aside id="publication-list" class="widget widget_blogs lg:mt-[50px] mt-10">
                             <h4
                                 class="text-dark-1 lg:text-[25px] text-2md leading-[1.6] capitalize font-semibold mb-5">
                                 Historique Des Events</h4>
                             <ul>
                                 @foreach ($publication as $publication)
-                                    <li class="flex items-center group mt-6 first:mt-0">
-                                        <a href="blog-details.html" class="shrink-0 w-20 mr-[15px] overflow-hidden">
-                                            <img src="assets/images/blog/ts-1.webp" alt="blogs"
-                                                class="w-full group-hover:scale-105 duration-200" />
-                                        </a>
-                                        <div class="grow">
-                                            <h5
-                                                class="lg:text-17px text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
-                                                <a href="{{ route('show.publications', $publication->id) }}">{{ $publication->titel }}-[{{ $publication->location }}]
-                                                </a>
-                                            </h5>
-                                            <h3 class="text-dark-3 text-sm mt-1">{{ $publication->category }}</h3>
+                                    @if ($publication->profile_id === $profiles->id)
+                                        <li class="flex items-center group mt-6 first:mt-0">
+                                            <a href="blog-details.html"
+                                                class="shrink-0 w-20 mr-[15px] overflow-hidden">
+                                                <img src="assets/images/blog/ts-1.webp" alt="blogs"
+                                                    class="w-full group-hover:scale-105 duration-200" />
+                                            </a>
+                                            <div class="grow">
+                                                <h5
+                                                    class="lg:text-17px text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
+                                                    <a href="{{ route('show.publications', $publication->id) }}">{{ $publication->titel }}-[{{ $publication->location }}]
+                                                    </a>
+                                                </h5>
+                                                <h3 class="text-dark-3 text-sm mt-1">{{ $publication->category }}</h3>
 
-                                            <div class="text-dark-3 text-sm mt-1">{{ $publication->date }}</div>
-                                        </div>
-                                    </li>
+                                                <div class="text-dark-3 text-sm mt-1">{{ $publication->date }}</div>
+                                            </div>
+                                        </li>
+                                    @endif
                                 @endforeach
 
 
@@ -194,7 +198,90 @@
                         </aside>
 
                     @endif
+                    @if (Auth::user()->role === 'Utilisateur')
+                        <aside class="widget widget_search">
+                            <form id="search-form" action="#">
+                                <div class="flex">
+                                    <input type="text"
+                                        class="w-full lg:h-[55px] h-[48px] border border-primary-1 bg-transparent grow outline-none px-5 py-2 placeholder:text-dark-3 text-dark-2 text-[15px] focus:border-secondary-1"
+                                        placeholder="Search Here">
+                                    <button type="submit"
+                                        class="shrink-0 lg:h-[55px] h-[48px] bg-primary-1 w-14 flex justify-center items-center duration-300 hover:bg-secondary-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z"
+                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M21 21L16 16" stroke="white" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </aside>
 
+                        <aside id="publication-list" class="widget widget_blogs lg:mt-[50px] mt-10">
+                            <h4
+                                class="text-dark-1 lg:text-[25px] text-2md leading-[1.6] capitalize font-semibold mb-5">
+                                Reservation Des Events</h4>
+                            <ul>
+                                @foreach ($PublicationReservations as $PublicationReservation)
+                                    @if (new DateTime() < new DateTime($PublicationReservation->date))
+                                        <li class="flex items-center group mt-6 first:mt-0">
+                                            <a href="blog-details.html"
+                                                class="shrink-0 w-20 mr-[15px] overflow-hidden">
+                                                <img src="assets/images/blog/ts-1.webp" alt="blogs"
+                                                    class="w-full group-hover:scale-105 duration-200" />
+                                            </a>
+                                            <div class="grow">
+                                                <h5
+                                                    class="lg:text-17px text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
+                                                    <a
+                                                        href="{{ route('show.publications', $PublicationReservation->id) }}">{{ $PublicationReservation->titel }}-[{{ $PublicationReservation->location }}]
+                                                    </a>
+                                                </h5>
+                                                <div class="text-dark-3 text-sm mt-1">Date de Check-out
+                                                    :{{ $PublicationReservation->date }}</div>
+                                            </div>
+                                            <form
+                                                action="{{ route('destroy.reservation', $PublicationReservation->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="hidden" name="publication_id" value="{{ $PublicationReservation->id }}">
+                                                <button type="submit" class="btn_primary__v2"
+                                                    onclick="return confirm('Vouler vous vraiment supprimer la event')">
+                                                    anuller
+                                                    <i class="bi bi-chevron-right"></i>
+                                                </button>
+                                            </form>
+
+                                        </li>
+                                    @endif
+                                @endforeach
+
+
+
+                                <li class="flex items-center group mt-6 first:mt-0">
+                                    <a href="blog-details.html" class="shrink-0 w-20 mr-[15px] overflow-hidden">
+                                        <img src="assets/images/blog/ts-3.webp" alt="blogs"
+                                            class="w-full group-hover:scale-105 duration-200" />
+                                    </a>
+                                    <div class="grow">
+                                        <h5
+                                            class="lg:text-17px text-base font-semibold leading-[1.64] group-hover:text-primary-1 duration-200 fixed-title">
+                                            <a href="blog-details.html">The Most Underrated European Cities, according
+                                                to
+                                                google you should know</a>
+                                        </h5>
+                                        <div class="text-dark-3 text-sm mt-1">September 23, 1999</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </aside>
+
+                    @endif
 
                     <aside class="widget widget_offer lg:mt-[50px] mt-10">
                         <a href="package-list.html">
